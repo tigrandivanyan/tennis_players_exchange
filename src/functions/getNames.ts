@@ -1,24 +1,35 @@
-import axios from 'axios'
+import axios from 'axios';
+
+interface IParticipantData {
+    id:string,
+    name:string,
+}
 
 const getNames = async (tournamentID:string, setNames:(value) => void) => {
     const url = process.env.REACT_APP_BACK_URL || 'localohst:8000';
+    const key = process.env.REACT_APP_KEY || '';
 
-    console.log(url + '/schedule?' + new URLSearchParams({
-        tournamentID,
-        type:'latest'
-    }))
-    axios.get(url + '/schedule?' + new URLSearchParams({
+    const res = await axios.get(url + '/schedule?' + new URLSearchParams({
         tournamentID,
         scheduleType:'latest'
-    }), {headers:{key:'SUeue5xzo3K69Chb'}})
-        .then(msg => {
-            console.log(200);
-            console.log(msg);
-        })
-        .catch(err => {
-            console.log(500);
-            console.log(err.response)
-        })
+    }), {headers:{key}});
+
+    console.log(res)
+
+    if(res && res?.data && res?.data?.schedule){
+        const names:IParticipantData[] = [];
+        const { schedule } = res.data;
+
+        for(let i = 0; i < 1; i++){
+            Object.values(schedule[i]).forEach((participantData:IParticipantData) => {
+                const {id, name} = participantData;
+                names.push({id, name})
+            })
+        }
+    }
+    else{
+
+    }
 
 }
 
