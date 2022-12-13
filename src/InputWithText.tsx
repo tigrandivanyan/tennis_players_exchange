@@ -18,7 +18,7 @@ const InputWithText: React.FC<IInputWithTextProps> = ({ children, type, tid, set
             <p><Text tid={tid}/></p>
             {
                 type === "children" ?
-                    React.isValidElement(children) && cloneElement(children as any, { tid, set, disabled })
+                    React.isValidElement(children) && cloneElement(children as any, { tid,  disabled })
                     :
                     <input type={type} onChange={e => set(e.target.value)} disabled={disabled}/>
 

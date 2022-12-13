@@ -2,7 +2,7 @@ import React from 'react';
 import '../sample/sample.css';
 
 interface ISampleData{
-    data?: object,
+    data?: any,
     closeModal?:() => void
 }
 
@@ -12,7 +12,8 @@ const Sample: React.FC<ISampleData> = ({ data, closeModal }) => {
 
     return(
         <div className='modal-sample'>
-            {/*{data.text}*/}
+            <h1>Sample modal</h1>
+            {data.text}
             <button onClick={closeModal}>Close</button>
         </div>
     )

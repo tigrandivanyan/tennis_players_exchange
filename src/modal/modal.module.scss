@@ -1,0 +1,63 @@
+/* Appearance animation code */
+@keyframes appear {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+/* Disappearance animation code */
+@keyframes disappear {
+  from {
+    opacity: 1
+  }
+  to {
+    opacity: 0
+  }
+}
+
+.modalContainer {
+  //Dimensions
+  width: 100vw;
+  height: 100vh;
+
+  //Positions
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+
+  //Styles
+  background-color: rgba(0, 0, 0, 0.8);
+
+  //Animations
+  animation-name: appear;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+
+}
+
+.children {
+  display: flex;
+  justify-content: center;
+}
+
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.disappear {
+  animation-name: disappear !important;
+}

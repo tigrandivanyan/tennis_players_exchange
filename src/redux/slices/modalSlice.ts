@@ -10,7 +10,7 @@ export interface IModalValues
 const initialState: IModalValues = {
     shown:false,
     data:{},
-    type:''
+    type:'Sample'
 };
 
 export const modalSlice = createSlice({
